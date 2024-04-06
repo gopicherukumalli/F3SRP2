@@ -103,8 +103,7 @@ public class flyAdeal extends FlyAdealCacheFlow  {
 
                     //System.out.println("SRP Date: " + Departdate);
                     
-                    Thread.sleep(2000);
-                    
+                   
                     Depdate = getDateAfterDaysFormatted(totalOffset - 1, "dd MMM yyyy");
                     //System.out.println("System Date: " + Depdate);
                     

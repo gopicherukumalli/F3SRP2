@@ -123,7 +123,24 @@ public class flyAdeal extends FlyAdealCacheFlow  {
                     Currency = driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Total:'])[1]/following::span[1]")).getText().replaceAll(" ", "");
                     //System.out.println(Currency);
 
-                    List<WebElement> flightDetails = driver.findElements(By.xpath("//div[@class='flight_details_wrap']"));
+                    String F3Flights=driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Back'])[1]/preceding::div[2]")).getText().replaceAll(" ", "");
+                    //System.out.println(F3Flights);
+                    
+                    if (F3Flights.equals("Noflightsavailable")) {
+                    	System.out.println("No Flights");
+    	                String From = PnrDetails.From;
+    	                String To = PnrDetails.To;
+    	                ApiMethods.sendResults(Currency, From, To, Depdate, new ArrayList<FadFlightDetails>());
+                        
+                        
+                    }
+                    else {
+                    	
+                    FlightDetailsSending(driver, PnrDetails);
+                    	 
+                    }
+
+                    /*List<WebElement> flightDetails = driver.findElements(By.xpath("//div[@class='flight_details_wrap']"));
                     //System.out.println("Total Flights :" + flightDetails.size());
 
                     if (flightDetails.size() == 0) {
@@ -134,7 +151,7 @@ public class flyAdeal extends FlyAdealCacheFlow  {
                         // Handle no flights scenario
                     } else {
                         FlightDetailsSending(driver, PnrDetails);
-                    }
+                    }*/
 
                     // If it's the last iteration of the inner loop and not the last week, click on the "Next" button
                     if (dayOffset == 7 && weekOffset < 1) {
@@ -192,8 +209,8 @@ public class flyAdeal extends FlyAdealCacheFlow  {
                      //String str1=ele.replaceAll("[\r\n]+", " ").replace(",", "");
 					 String str1=ele.replaceAll("[\r\n]+", " ").replace(",", "").replace("F3 ", "F3");
 					 
-					 String s=str1.replaceAll("Select Fare","").replaceAll("Your #flyforless flight ","").replaceAll("Sharm El Sheikh", "SharmElSheikh").replaceAll("Terminal[1-9] ", "").replaceAll("From ", "").replaceAll("journeyFareDetails-Popup.", "");
-					 String Str = new String(s);
+					 String s=str1.replaceAll("Select Fare","").replaceAll("Your #flyforless flight ","").replaceAll("Sharm El Sheikh", "SharmElSheikh").replaceAll("Terminal[1-9] ", "").replaceAll("From ", "").replaceAll("journeyFareDetails-Popup.", "").replaceAll("Starting from  ", "").replaceAll("Dubai Airport ", "Dubai ");
+					String Str = new String(s);
 				        
 				      
 					 //driver.get("https://www.google.com/");
@@ -425,12 +442,13 @@ public class flyAdeal extends FlyAdealCacheFlow  {
 			
 		}
 		
-		
-		
-		
-		
+		try {
 			ApiMethods.sendResults(Currency,From, To,Depdate, finalList);
-		
+			
+		}
+		catch (Exception e) {
+			System.out.println("Data not updated");
+		}
 	}
 
 }

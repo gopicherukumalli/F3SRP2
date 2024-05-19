@@ -63,7 +63,7 @@ public class FlyAdealCacheFlow{
 	    
 		RequestSpecification request = RestAssured.given();
 		request.header("Content-Type", "text/json");
-		Response response = request.get("/GetF3Routes?days="+days+"&group=7&orderby=asc&skipdays="+skipdays+"");
+		Response response = request.get("/GetF3Routes?days="+days+"&group=4&orderby=asc&skipdays="+skipdays+"");
 		System.out.println("Response body: " + response.body().asString());
 		String s=response.body().asString();
 		System.out.println(s);

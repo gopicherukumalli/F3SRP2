@@ -1,15 +1,15 @@
 name: SRP
 on:
   schedule:
-    - cron: '* * * * *'
+   - cron: '* * * * *'
+   - cron: '*/15 * * * *'
+   - cron: '20 * * * *'
   
 jobs:
   runtests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          node-version: '20' # Update Node.js version to 20
 
       - name: Cache Maven dependencies
         uses: actions/cache@v2

@@ -2,9 +2,6 @@ name: SRP
 on:
   schedule:
    - cron: '* * * * *'
-   - cron: '*/15 * * * *'
-   - cron: '20 * * * *'
-  
 jobs:
   runtests:
     runs-on: ubuntu-latest

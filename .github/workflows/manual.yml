@@ -2,7 +2,7 @@ name: SRP
 
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '*/15 * * * *'
 
 jobs:
   runtests:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Cache Maven dependencies
+      - name: Cache Maven dependencies 
         uses: actions/cache@v2
         with:
           path: ~/.m2/repository

@@ -106,10 +106,10 @@ public class flyAdeal extends FlyAdealCacheFlow  {
                     date = websiteDate.split("\\|")[0].trim();
                     Currency = driver.findElement(By.cssSelector("span.currency.ng-star-inserted")).getText().replaceAll(" ", "");
                     
-                    String F3Flights=driver.findElement(By.cssSelector(".flight_details_wrap, .no-flight-available-wrap")).getText().replaceAll(" ", "");
-                    //System.out.println(F3Flights);
+                    String F3Flights=driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Back'])[1]/preceding::div[2]")).getText();
+                    System.out.println(F3Flights);
                     
-                    if (F3Flights.equals("Noflightsavailable")) {
+                    if (F3Flights.contains("No flights available")) {
                     	System.out.println("No Flights");
     	                String From = PnrDetails.From;
     	                String To = PnrDetails.To;

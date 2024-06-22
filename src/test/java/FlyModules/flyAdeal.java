@@ -109,7 +109,7 @@ public class flyAdeal extends FlyAdealCacheFlow  {
                     String F3Flights=driver.findElement(By.xpath("//app-journey-one-way[1]/section[1]/app-trip-one-way[1]/app-journey-fare-details[1]/div[2]")).getText().replaceAll(" ", "").replaceAll("journeyFareDetails-Popup.", "");
                     System.out.println(F3Flights);
                     
-                    if (F3Flights.contains("Noflightsavailable")) {
+                    if (F3Flights.contains("Noflightsavailable") || F3Flights.contains("journeyFare.para1")) {
                     	System.out.println("No Flights");
     	                String From = PnrDetails.From;
     	                String To = PnrDetails.To;

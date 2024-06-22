@@ -3,6 +3,7 @@ name: SRP
 on:
   schedule:
     - cron: '*/15 * * * *'
+    - cron: '*/08 * * * *'
    
 
 jobs:

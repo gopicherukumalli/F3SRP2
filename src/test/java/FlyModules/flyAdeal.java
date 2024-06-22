@@ -191,7 +191,7 @@ public class flyAdeal extends FlyAdealCacheFlow  {
                      //String str1=ele.replaceAll("[\r\n]+", " ").replace(",", "");
 					 String str1=ele.replaceAll("[\r\n]+", " ").replace(",", "").replace("F3 ", "F3");
 					 
-					 String s=str1.replaceAll("Select Fare","").replaceAll("Your #flyforless flight ","").replaceAll("Sharm El Sheikh", "SharmElSheikh").replaceAll("Terminal[1-9] ", "").replaceAll("From ", "").replaceAll("journeyFareDetails-Popup.", "").replaceAll("Dubai Airport ", "Dubai ").replaceAll("Soldout", "Sold Out");
+					 String s=str1.replaceAll("Select Fare","").replaceAll("Your #flyforless flight ","").replaceAll("Sharm El Sheikh", "SharmElSheikh").replaceAll("Terminal[1-9] ", "").replaceAll("From ", "").replaceAll("journeyFareDetails-Popup.", "").replaceAll("Dubai Airport ", "Dubai ").replaceAll("Soldout", "Sold Out").replaceAll("Dubai Al Maktoum Airport", "DubaiAlMaktoumAirport");
 					 String Str = new String(s);
 				        
 				      
